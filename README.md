@@ -1,3 +1,13 @@
 # hello-world
-Just another repository
-some additional messages.
+
+簡単なハイアンドロー（High & Low）ゲームを追加しました。
+
+## 遊び方
+
+```bash
+python3 high_low.py
+```
+
+- 1〜100の数字を予想して入力
+- 「もっと大きい/小さい」のヒントで絞り込む
+- 当たったら回数が表示されます
