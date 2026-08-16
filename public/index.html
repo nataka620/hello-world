@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>リアルタイム音声AI会話 &amp; 要約</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div id="unsupported-banner" class="banner hidden">
+    お使いのブラウザは音声認識(Web Speech API)に対応していません。<strong>Google Chrome</strong> または <strong>Microsoft Edge</strong> の最新版でお試しください。
+  </div>
+
+  <header class="app-header">
+    <div class="title-block">
+      <h1>リアルタイム音声AI会話</h1>
+      <p class="subtitle">話しかけると文字起こし・AIとの会話・要約が同時に進みます</p>
+    </div>
+    <div class="status-block">
+      <span id="connection-dot" class="dot dot-off" title="サーバー接続状態"></span>
+      <span id="connection-label">未接続</span>
+      <span class="sep">|</span>
+      <span id="elapsed">00:00:00</span>
+    </div>
+  </header>
+
+  <section class="controls">
+    <button id="mic-btn" class="mic-btn" type="button">
+      <span id="mic-icon" aria-hidden="true">🎙️</span>
+      <span id="mic-label">会話を始める</span>
+    </button>
+
+    <label class="field">
+      言語
+      <select id="lang-select">
+        <option value="ja-JP" selected>日本語</option>
+        <option value="en-US">English (US)</option>
+        <option value="en-GB">English (UK)</option>
+        <option value="zh-CN">中文 (普通话)</option>
+        <option value="ko-KR">한국어</option>
+        <option value="es-ES">Español</option>
+      </select>
+    </label>
+
+    <label class="field checkbox-field">
+      <input type="checkbox" id="voice-toggle" checked />
+      AIの声で読み上げる
+    </label>
+
+    <button id="clear-btn" class="ghost-btn" type="button">会話をクリア</button>
+  </section>
+
+  <main class="layout">
+    <section class="panel conversation-panel">
+      <h2>会話 <span id="live-indicator" class="live-indicator hidden">● 認識中</span></h2>
+      <div id="transcript" class="transcript" aria-live="polite"></div>
+      <div id="interim-line" class="interim-line"></div>
+    </section>
+
+    <aside class="panel summary-panel">
+      <h2>ライブ要約</h2>
+      <div id="summary-meta" class="summary-meta">まだ要約はありません</div>
+      <div id="summary-body" class="summary-body">会話が始まると、ここに要約が自動更新されます。</div>
+    </aside>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
